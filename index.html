@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css" type="text/css" />
+    <script src="https://kit.fontawesome.com/92738dbdc5.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <title>☀️Weather</title>
+</head>
+<body>
+   
+    <div class="container-weather">
+        <div class="header">
+            <div class="about-day">
+                <div class="about-day__list">
+                    <p ><span class="header-day" id="dayOftheWeek">Sunday</span></p>
+                    <p id="corentDate">23.10.2022</p>
+                    <p id="curentTime">13:35</p>
+                </div>
+            </div>
+            <div class="enter-city">
+                <form class="enter-city" id="city-form" >
+                <div class="mb-1 mr-2 m-1">
+                    <input type="text" class="form-control border-info" id="cityName" placeholder="Enter you city">
+                </div>
+                <input type="submit" class="btn btn-outline-primary border-info mb-2 m-1" id="submitCity" value="Search">
+                <button type="button" class="btn btn-outline-success border-info mb-2 m-1" id="enterCurentCity">Curent</button>
+                <!---
+                    <button type="submit" class="btn btn-outline-primary border-info mb-2" id="submitCity">Submit</button>-->
+                </form>
+               
+            </div>
+        </div>
+        <section class="curent">
+            <div class="city-temperature">
+                <div class="curent-city" > 
+                    <span class="city-name" id="city">Talske</span> 
+                    <span class="curent-temperature"> <span id="temperature">15</span>
+                    <span class="units">
+                        <a href="#" class="units-link selectUnit" id="celsius-link">°C</a>
+                         <span class="units-link"> | </span>
+                        <a href="#" class="units-link" id="fahrenheit-link">°F</a>
+                    </span>
+                    </span> 
+                </div>
+               
+            </div>
+            <div class="curent-img-weather">
+                <div class="curent-img"><i class="fa-solid fa-cloud"></i></div>
+                <div class="curent-weather">
+                    <p id="clouds">Clouds</p>
+                    <p id="humidity">Humidity: 98%</p>
+                    <p id="wind">Wind:7 m/s</p>
+                </div>
+            </div>
+        </section>
+        <section class="week-weather card-group">
+            <div class="card border-info mb-3" style="max-width: 14rem;">
+                <div class="card-header">Mon</div>
+                <div class="card-body">
+                    <h5 class="card-title">🌤</h5>
+                    <p class="card-text">12° | 7°</p>
+                </div>
+            </div>
+            <div class="card border-info mb-3" style="max-width: 14rem;">
+                <div class="card-header">Tue</div>
+                <div class="card-body">
+                    <h5 class="card-title">🌦</h5>
+                    <p class="card-text">16° | 10°</p>
+                </div>
+            </div>
+            <div class="card border-info mb-3" style="max-width: 14rem;">
+                <div class="card-header">Wed</div>
+                <div class="card-body">
+                    <h5 class="card-title">☀️</h5>
+                    <p class="card-text">18° | 9°</p>
+                </div>
+            </div>
+            <div class="card border-info mb-3" style="max-width: 14rem;">
+                <div class="card-header">Thu</div>
+                <div class="card-body">
+                    <h5 class="card-title">🌤</h5>
+                    <p class="card-text">11° | 7°</p>
+                </div>
+            </div>
+            <div class="card border-info mb-3" style="max-width: 14rem;">
+                <div class="card-header">Fri</div>
+                <div class="card-body">
+                    <h5 class="card-title">☁️</h5>
+                    <p class="card-text">12° | 6°</p>
+                </div>
+            </div>
+            <div class="card border-info mb-3" style="max-width: 14rem;">
+                <div class="card-header">Sat</div>
+                <div class="card-body">
+                    <h5 class="card-title">☀️</h5>
+                    <p class="card-text">12° | 7°</p>
+                </div>
+            </div>
+
+        </section>
+        <div class="author">Open - Source Code by Maryna Khrystyianyn</div>
+
+    </div>
+    <script src="src/index.js"></script>
+</body>
+</html>
