@@ -89,6 +89,9 @@ body {
   font-size: 60px;
   color: #02325a;
 }
+.curent-img {
+  font-size: 100px;
+}
 
 .units {
   position: relative;
