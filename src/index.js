@@ -8,6 +8,7 @@ let temperatureBasic = {
   celsius: 15,
   fahrenheit: 59,
 };
+
 function getWeatherIcon(icon) {
   icon = icon.slice(0, 2);
   let weatherEmoji;
@@ -70,6 +71,7 @@ function showWeather(response) {
   wind.innerHTML = `Wind: ${response.data.wind.speed}m/s`;
   curentImg = document.querySelector("#curent-img");
   curentImg.innerHTML = getWeatherIcon(response.data.weather[0].icon);
+  curentDate();
 }
 
 function setWeather(city) {
@@ -136,7 +138,7 @@ function chngeUnitsF() {
 function handlePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
+  let apiKey = "6b115e6146d232dba59a91769a209348";
   console.log(lat);
   console.log(lon);
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
