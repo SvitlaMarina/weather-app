@@ -125,10 +125,6 @@ body {
   width: 80%;
 }
 
-.fa-cloud {
-  font-size: 70px;
-  color: #fff;
-}
 .curent-weather p {
   margin-top: 0;
   margin-bottom: 0;
@@ -157,6 +153,9 @@ body {
 .week-weather {
   margin: 10px;
   justify-content: center;
+}
+.week-weather__max {
+  font-weight: 700;
 }
 .card-header {
   text-align: center;

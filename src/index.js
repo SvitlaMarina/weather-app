@@ -46,6 +46,54 @@ function getWeatherIcon(icon) {
   return weatherEmoji;
 }
 
+function getDayOfWeek(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHtml = "";
+  let i = 0;
+  forecast.forEach(function (dayforecast) {
+    let weatherIcon = getWeatherIcon(dayforecast.weather[0].icon);
+    let dayOfWeek = getDayOfWeek(dayforecast.dt);
+    if (i < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="card border-info mb-3" style="max-width: 14rem">
+          <div class="card-header">${dayOfWeek}</div>
+          <div class="card-body">
+            <h5 class="card-title">${weatherIcon}</h5>
+            <p class="card-text">
+              <span class="week-weather__max">${Math.round(
+                dayforecast.temp.max
+              )}° </span>|
+              <span class="week-weather__min"> ${Math.round(
+                dayforecast.temp.min
+              )}°</span>
+            </p>
+          </div>
+        </div>`;
+    }
+    i++;
+  });
+  forecastElement.innerHTML = forecastHtml;
+}
+
+function getForecast(cordinates) {
+  console.log(cordinates.lat);
+  let apiKey = "15b6ba0523386a8a73b38b2440a74dea";
+  let forecastApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${cordinates.lat}&lon=${cordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  axios.get(forecastApi).then(displayForecast);
+}
+
 function showWeather(response) {
   let clouds;
   let humidity;
@@ -72,6 +120,8 @@ function showWeather(response) {
   curentImg = document.querySelector("#curent-img");
   curentImg.innerHTML = getWeatherIcon(response.data.weather[0].icon);
   curentDate();
+  console.log(response.data.coord);
+  getForecast(response.data.coord);
 }
 
 function setWeather(city) {
@@ -150,6 +200,7 @@ function curentCity() {
 }
 
 curentDate();
+
 setWeather("Talske");
 let btnCity = document.querySelector("#city-form");
 btnCity.addEventListener("submit", changeCity);
