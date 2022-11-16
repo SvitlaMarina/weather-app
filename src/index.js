@@ -4,10 +4,6 @@ function ucFirst(str) {
     return newStr;
   } else return "";
 }
-let temperatureBasic = {
-  celsius: 15,
-  fahrenheit: 59,
-};
 
 function getWeatherIcon(icon) {
   icon = icon.slice(0, 2);
@@ -104,13 +100,10 @@ function showWeather(response) {
 
   city = document.querySelector("#city");
   city.innerHTML = response.data.name;
+  console.log("дані" + response.data);
   console.log(response.data);
-  temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
-  temperatureBasic.celsius = temperature;
-  temperatureBasic.fahrenheit = Math.round(temperature * 1.8 + 32);
-  console.log(temperatureBasic.fahrenheit);
-  chngeUnitsC();
+  temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(response.data.main.temp);
   clouds = document.querySelector("#clouds");
   clouds.innerHTML = ucFirst(response.data.weather[0].description);
   humidity = document.querySelector("#humidity");
@@ -120,7 +113,6 @@ function showWeather(response) {
   curentImg = document.querySelector("#curent-img");
   curentImg.innerHTML = getWeatherIcon(response.data.weather[0].icon);
   curentDate();
-  console.log(response.data.coord);
   getForecast(response.data.coord);
 }
 
@@ -168,23 +160,6 @@ function curentDate() {
   time.innerHTML = `${now.getHours()}:${minutes}`;
 }
 
-function chngeUnitsC() {
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = temperatureBasic.celsius;
-  let fahrenheit = document.querySelector("#fahrenheit-link");
-  fahrenheit.classList.remove("selectUnit");
-  let celsius = document.querySelector("#celsius-link");
-  celsius.classList.add("selectUnit");
-}
-function chngeUnitsF() {
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = temperatureBasic.fahrenheit;
-  let fahrenheit = document.querySelector("#fahrenheit-link");
-  fahrenheit.classList.add("selectUnit");
-  let celsius = document.querySelector("#celsius-link");
-  celsius.classList.remove("selectUnit");
-}
-
 function handlePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -207,8 +182,3 @@ btnCity.addEventListener("submit", changeCity);
 
 let btnCurent = document.querySelector("#enterCurentCity");
 btnCurent.addEventListener("click", curentCity);
-
-let unitLinkC = document.querySelector("#celsius-link");
-unitLinkC.addEventListener("click", chngeUnitsC);
-let unitLinkf = document.querySelector("#fahrenheit-link");
-unitLinkf.addEventListener("click", chngeUnitsF);
